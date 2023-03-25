@@ -21,19 +21,19 @@ class Device(Enum):
 def toggle(device: Device):
     radio.stopListening()
     radio.openWritingPipe(device.value)
-    radio.write([0x01])
+    radio.write([0x01, 0x02])
     
 def led_red():
     radio.stopListening()
     radio.openWritingPipe(Device.led.value)
-    radio.write([0x02])
+    radio.write([0x02, 0x01])
     
 def led_green():
     radio.stopListening()
     radio.openWritingPipe(Device.led.value)
-    radio.write([0x03])
+    radio.write([0x02, 0x02])
     
 def led_blue():
     radio.stopListening()
     radio.openWritingPipe(Device.led.value)
-    radio.write([0x04])
+    radio.write([0x02, 0x03])
