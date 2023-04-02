@@ -10,7 +10,7 @@ import Alamofire
 
 class ContentViewModel {
     
-    private var baseUrl = URL(string: "https://raspberrypi:8000")!
+    private var baseUrl = URL(string: "http://raspberrypi:8000")!
     
     func toggleRelay() {
         sendRequest(path: "toggle/relay")
