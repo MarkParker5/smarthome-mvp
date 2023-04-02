@@ -15,10 +15,10 @@ void loop() {
 
 void execute(byte f, byte x) {
     if (f == 1) {
-        if x < 2 {
+        if (x < 2) {
             is_on = x;
             digitalWrite(3, is_on);
-        } else if x == 2 {
+        } else if (x == 2) {
             is_on = !is_on;
             digitalWrite(3, is_on);
         }
