@@ -4,12 +4,12 @@
 Merlin device;
 bool is_on = false;
 
-#define DATA_PIN 6
+#define DATA_PIN 3
 #define LED_TYPE NEOPIXEL 
-#define NUM_LEDS 8
+#define NUM_LEDS 300
 
 CRGB leds[NUM_LEDS];
-int brightness = 20;
+int brightness = 200;
 
 void setup() {
     urdi my_urdi = {0x02, 0x00, 0x00, 0x00, 0xff};
@@ -19,7 +19,7 @@ void setup() {
     FastLED.setDither(false);
     FastLED.setCorrection(TypicalLEDStrip);
     FastLED.setBrightness(brightness);
-    FastLED.setMaxPowerInVoltsAndMilliamps(5, 400);
+    FastLED.setMaxPowerInVoltsAndMilliamps(5, 1000);
     fill_solid(leds, NUM_LEDS, CRGB::Black);
     FastLED.show();
 }
@@ -35,8 +35,9 @@ void execute(byte f, byte x) {
         } else if (x == 2) {
             is_on = !is_on;
         }
-        FastLED.showColor(is_on ? CRGB::White : CRGB::Black);
+        fill_solid(leds, NUM_LEDS, is_on ? CRGB::White : CRGB::Black);
     } else if (f == 2) {
+        is_on = true;
         if (x == 1) {
             fill_solid(leds, NUM_LEDS, CRGB::Red);
         } else if (x == 2) {
