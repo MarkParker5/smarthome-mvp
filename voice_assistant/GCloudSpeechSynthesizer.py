@@ -25,15 +25,14 @@ class Speech:
 class GCloudSpeechSynthesizer:
     
     def __init__(self, name = config.voice, language_code = config.language_code):
-        os.environ['google_APPLICATION_CREDENTIALS'] = config.google_tts_key
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = config.google_tts_key
         self._client       = texttospeech.TextToSpeechClient()
         self._audio_config = texttospeech.AudioConfig(audio_encoding = texttospeech.AudioEncoding.LINEAR16)
         self._language_code= language_code
         self._name         = name
         self._voice        = texttospeech.VoiceSelectionParams(
             language_code  = self._language_code,
-            name           = self._name,
-            ssml_gender    = texttospeech.SsmlVoiceGender.FEMALE
+            name           = self._name
         )
 
     def synthesize(self, text) -> Speech:
