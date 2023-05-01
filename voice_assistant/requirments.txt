@@ -1,0 +1,6 @@
+speechrecognition
+google-cloud-texttospeech
+soundfile
+sounddevice
+numpy
+requests
